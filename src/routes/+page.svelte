@@ -128,7 +128,7 @@
         margin: 6px auto 10px;
         cursor: pointer;
     }
-    
+
 	:global(.curOwner) {
 		font-size: 0.75em;
 		color: #bbb;
@@ -139,7 +139,7 @@
 <div id="home">
     <div id="main">
         <div class="text">
-            <h6>{leagueName}</h6>
+            <h2>{leagueName}</h2>
             <!-- homepageText contains the intro text for your league, this gets edited in /src/lib/utils/leagueInfo.js -->
             {@html homepageText }
             <!-- Most recent Blog Post (if enabled) -->
@@ -149,14 +149,14 @@
         </div>
         <PowerRankings />
     </div>
-    
+
     <div class="leagueData">
         <div class="homeBanner">
             {#await nflState}
                 <div class="center">Retrieving NFL state...</div>
                 <LinearProgress indeterminate />
             {:then nflStateData}
-                <div class="center">NFL {nflStateData.season} 
+                <div class="center">NFL {nflStateData.season}
                     {#if nflStateData.season_type == 'pre'}
                         Preseason
                     {:else if nflStateData.season_type == 'post'}
