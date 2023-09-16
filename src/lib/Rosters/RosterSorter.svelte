@@ -1,7 +1,7 @@
 <script>
     import Button, { Label } from '@smui/button';
 	import Roster from './Roster.svelte';
-	
+
 	export let rosters, leagueTeamManagers, startersAndReserve, leagueData, players;
 
 	const rosterPositions = leagueData.roster_positions;
@@ -49,18 +49,18 @@
 	}
 
 	.banner-D-1 {
-		background-image: url("/division-1-banner.png");
-		background-position: left; 
+		/*background-image: url("/division-1-banner.png");*/
+		background-position: left;
 	}
 
 	.banner-D-2 {
-		background-image: url("/division-2-banner.png");
-		background-position: right; 
+		/*background-image: url("/division-2-banner.png");*/
+		background-position: right;
 	}
 
 	.banner-D-3 {
-		background-image: url("/division-3-banner.png");
-		background-position: left; 
+		/*background-image: url("/division-3-banner.png");*/
+		background-position: left;
 	}
 
 	h2 {
