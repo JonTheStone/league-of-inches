@@ -35,6 +35,29 @@ https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding
 
 // To omit an optional field, set it's value to null
 
+async function getUserAvatar(userId) {
+  try {
+    const userResponse = await fetch(`https://api.sleeper.app/v1/user/${userId}`);
+
+    if (!userResponse.ok) {
+      throw new Error('Network response was not ok ' + userResponse.statusText);
+    }
+
+    const userData = await userResponse.json();
+    const avatarId = userData.avatar;
+
+    if (!avatarId) {
+      console.log('No avatar ID found for user. Using fallback image.');
+      return "/managers/everyone.png";
+    }
+
+    return `https://sleepercdn.com/avatars/thumbs/${avatarId}`;
+  } catch (error) {
+    console.error('Error fetching user avatar:', error);
+    return "/managers/everyone.png";
+  }
+}
+
 export const managers = [
   {
     "roster": 1,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
@@ -313,6 +336,14 @@ export const managers = [
     "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
   },
 ]
+
+async function updateManagerPhotos() {
+  for (let manager of managers) {
+    manager.photo = await getUserAvatar(manager.managerID);
+  }
+}
+
+updateManagerPhotos();
 
 
   /*   !!  !!  IMPORTANT  !!  !! */
