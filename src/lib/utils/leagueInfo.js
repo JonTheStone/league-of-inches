@@ -51,7 +51,7 @@ async function getUserAvatar(userId) {
       return "/managers/everyone.png";
     }
 
-    return `https://sleepercdn.com/avatars/thumbs/${avatarId}`;
+    return `https://sleepercdn.com/avatars/${avatarId}`;
   } catch (error) {
     console.error('Error fetching user avatar:', error);
     return "/managers/everyone.png";
