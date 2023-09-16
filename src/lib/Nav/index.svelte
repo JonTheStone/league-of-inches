@@ -2,7 +2,7 @@
 	import { tabs } from '$lib/utils/tabs';
 	import NavSmall from './NavSmall.svelte';
 	import NavLarge from './NavLarge.svelte';
-    import { page } from '$app/stores';	
+    import { page } from '$app/stores';
 	import IconButton from '@smui/icon-button';
 	import { Icon } from '@smui/common';
 
@@ -12,7 +12,7 @@
 	let lightTheme =
 		typeof window === "undefined" ||
 		window.matchMedia("(prefers-color-scheme: light)").matches;
-	
+
 	function switchTheme() {
 		lightTheme = !lightTheme;
 		let themeLink = document.head.querySelector("#theme");
@@ -46,7 +46,7 @@
 	}
 
 	#logo {
-		width: 80px;
+		width: 320px;
 		display: block;
 		margin: 0 auto;
 		padding: 10px;
