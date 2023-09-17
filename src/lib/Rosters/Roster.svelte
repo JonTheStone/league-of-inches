@@ -1,9 +1,10 @@
 <script>
 	import { gotoManager } from '$lib/utils/helper';
-  	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
+	import { startingFaab } from '$lib/utils/leagueInfo.js';
+	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 	import { Icon } from '@smui/icon-button';
 	import RosterRow from "./RosterRow.svelte"
-	
+
 	export let roster, leagueTeamManagers, startersAndReserve, players, rosterPositions, division, expanded;
 
 	$: team = leagueTeamManagers.teamManagersMap[leagueTeamManagers.currentSeason][roster.roster_id].team;
@@ -12,7 +13,7 @@
 
 	const digestData = (passedPlayers, rawPlayers, startingPlayers = false, reserve = false) => {
 		let digestedRoster = [];
-	
+
 		for(const singlePlayer of rawPlayers) {
 			if(!startingPlayers && !reserve && startersAndReserve.includes(singlePlayer)) {
 				continue;
@@ -50,7 +51,7 @@
 				case "IR":
 					injury = "IR";
 					break;
-			
+
 				default:
 					break;
 			}
@@ -93,7 +94,7 @@
 				case "L":
 					innerRecord.push("red");
 					break;
-			
+
 				default:
 					innerRecord.push("gray");
 					break;
@@ -137,7 +138,7 @@
     text-align: center;
 		margin: 0.2em auto;
 	}
-	
+
 	.teamAvatar {
 		vertical-align: middle;
 		border-radius: 50%;
@@ -268,6 +269,10 @@
 						{team?.name ? team.name : 'No Manager'}
 					</h3>
 
+					<div>
+						{startingFaab === null ? 'Waiver Priority: ' + roster.settings.waiver_position : 'Remaining FAAB: ' + (startingFaab - roster.settings.waiver_budget_used)}
+					</div>
+
 					<div class="record">
 						{#each record as result}
 							<img alt="match result" class="result" src="/{result}.png" />
@@ -293,7 +298,7 @@
 				{#each finalBench as bench}
 					<RosterRow player={bench} />
 				{/each}
-				
+
 				<!-- 	IR	 -->
 				{#if finalIR}
 					<Row>

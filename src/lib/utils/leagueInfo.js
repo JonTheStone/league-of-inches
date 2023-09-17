@@ -4,6 +4,7 @@ export const leagueName = "League of Inches"; // your league name
 export const dues = 100; // (optional) used in template constitution page
 export const dynasty = false; // true for dynasty leagues, false for redraft and keeper
 export const enableBlog = true; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VITE_CONTENTFUL_SPACE environment variables
+export const startingFaab = 250; // set to null if league does not use FAAB, otherwise set your starting budget
 
 /*   STEP 2   */
 export const homepageText = `
@@ -156,7 +157,7 @@ export const managers = [
     "managerID": "603135208430034944",
     "name": "Ben",
     // "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-    "location": "Missoula, MO", // (optional)
+    "location": "Missoula, MT", // (optional)
     "bio": "",
     "photo": null, // this gets set via updateManagerPhotos()
     "fantasyStart": 2011, // (optional) when did the manager start playing fantasy football
@@ -167,7 +168,7 @@ export const managers = [
       link: 10, // manager array number within this array, or null to link back to all managers page
       image: null, // this gets set via updateManagerPhotos()
     },
-    // "favoritePlayer": 1426, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+    "favoritePlayer": 6797, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
     "valuePosition": "K", // (optional) Favorite position (QB, WR, RB, TE, etc.)
     // "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
     "philosophy": "Have Justin Herbert lead me to the promised land",

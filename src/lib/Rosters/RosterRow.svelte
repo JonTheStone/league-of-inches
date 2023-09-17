@@ -1,6 +1,6 @@
 <script>
 	import { Row, Cell } from '@smui/data-table';
-	
+
 	export let player;
 
 	const playerSLotClass = player.slot.replace('/', '').replace('SUPER_', 'S-').replace('REC_', 'R-');
@@ -239,7 +239,7 @@
             {/if}
         </div>
         {#if player.nickname}
-            <span class="nickname">"{player.nickname}</span>
+            <span class="nickname">"{player.nickname.length > 40 ? player.nickname.slice(0, 40) + '...' : player.nickname}"</span>
         {/if}
     </Cell>
 </Row>
